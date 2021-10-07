@@ -30,7 +30,7 @@ namespace StokProjesi
                 using (SqlCommand sqCommand = new SqlCommand("IslemGetirAscProc", _conn))
                 {
                     sqCommand.CommandType = CommandType.StoredProcedure;
-                    sqCommand.Parameters.Add("@PRCODE", SqlDbType.VarChar).Value = cbProductSelect.ValueMember.ToString();
+                    sqCommand.Parameters.Add("@PRCODE", SqlDbType.VarChar).Value = cbProductSelect.SelectedItem;
                     sqCommand.Parameters.Add("@STARTDATE ", SqlDbType.Int).Value = Convert.ToInt32(dtpStartingDate.Value.ToOADate());
                     sqCommand.Parameters.Add("@ENDDATE", SqlDbType.Int).Value = Convert.ToInt32(dtpEndingDate.Value.ToOADate());
 
@@ -68,9 +68,7 @@ namespace StokProjesi
 
                 while (sqlReader.Read())
                 {
-                    cbProductSelect.Items.Add(sqlReader["MalAdi"].ToString());
-                    cbProductSelect.ValueMember = sqlReader["MalKodu"].ToString();
-                    cbProductSelect.DisplayMember = sqlReader["MalAdi"].ToString();
+                    cbProductSelect.Items.Add(sqlReader["MalKodu"].ToString());
                 }
 
                 sqlReader.Close();
