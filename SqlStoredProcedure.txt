@@ -1,0 +1,20 @@
+﻿use stokdb
+go
+
+alter procedure IslemGetirAscProc(@ID INT, @STARTDATE int, @ENDDATE int)
+as
+
+begin
+
+select
+row_number() over (order by Tarih) as SiraNo,
+case S.IslemTur when 0 then 'Giriş' when 1 then 'Çıkış' end as 'İşlem Türü',
+S.EvrakNo,
+CONVERT(VARCHAR(15), CAST(S.Tarih - 2 AS datetime), 104) as Tarih,
+case when S.IslemTur = 0 and S.Miktar IS NOT NULL then S.Miktar end as 'Giriş Miktarı',
+case when S.IslemTur = 1 and S.Miktar IS NOT NULL then S.Miktar end as 'Çıkış Miktarı'
+from STI S
+where S.ID=@ID and S.Tarih between @STARTDATE and @ENDDATE
+
+
+end
