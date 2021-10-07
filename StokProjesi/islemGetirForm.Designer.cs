@@ -39,6 +39,7 @@ namespace StokProjesi
             this.dtpEndingDate = new System.Windows.Forms.DateTimePicker();
             this.vgData = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.btnToExcel = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.vgData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
@@ -99,7 +100,7 @@ namespace StokProjesi
             this.vgData.Location = new System.Drawing.Point(13, 139);
             this.vgData.MainView = this.gridView1;
             this.vgData.Name = "vgData";
-            this.vgData.Size = new System.Drawing.Size(400, 200);
+            this.vgData.Size = new System.Drawing.Size(441, 276);
             this.vgData.TabIndex = 9;
             this.vgData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -109,11 +110,21 @@ namespace StokProjesi
             this.gridView1.GridControl = this.vgData;
             this.gridView1.Name = "gridView1";
             // 
+            // btnToExcel
+            // 
+            this.btnToExcel.Location = new System.Drawing.Point(379, 421);
+            this.btnToExcel.Name = "btnToExcel";
+            this.btnToExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnToExcel.TabIndex = 10;
+            this.btnToExcel.Text = "Excel\'e Aktar";
+            this.btnToExcel.Click += new System.EventHandler(this.btnToExcel_Click);
+            // 
             // islemGetirForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(466, 450);
+            this.Controls.Add(this.btnToExcel);
             this.Controls.Add(this.vgData);
             this.Controls.Add(this.dtpEndingDate);
             this.Controls.Add(this.dtpStartingDate);
@@ -140,6 +151,7 @@ namespace StokProjesi
         private System.Windows.Forms.DateTimePicker dtpEndingDate;
         private DevExpress.XtraGrid.GridControl vgData;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.SimpleButton btnToExcel;
     }
 }
 

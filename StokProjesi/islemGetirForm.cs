@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace StokProjesi
@@ -49,6 +50,7 @@ namespace StokProjesi
             }
         }
 
+        //Form yüklendiğinde dropdown menüyü doldurur.
         private void PopulateDropDown()
         {
             using (_conn = new SqlConnection(ConfigurationManager.ConnectionStrings["connStr"].ConnectionString))
@@ -68,6 +70,20 @@ namespace StokProjesi
                 }
 
                 sqlReader.Close();
+            }
+        }
+
+        private void btnToExcel_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
+
+                if (DialogResult.OK == saveDialog.ShowDialog())
+                {
+                    string path = saveDialog.FileName;
+                    vgData.ExportToXlsx(path);
+                }
             }
         }
     }
