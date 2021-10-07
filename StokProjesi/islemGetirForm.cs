@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StokProjesi
@@ -26,7 +20,9 @@ namespace StokProjesi
         {
             using (_conn = new SqlConnection(ConfigurationManager.ConnectionStrings["connStr"].ConnectionString))
             {
-                
+                vgData.DataSource = null;
+                vgData.DefaultView.PopulateColumns();
+
                 using (SqlCommand sqCommand = new SqlCommand("IslemGetirAscProc", _conn))
                 {
                     sqCommand.CommandType = CommandType.StoredProcedure;
@@ -47,7 +43,7 @@ namespace StokProjesi
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Can not open connection ! ");
+                        MessageBox.Show(ex.Message);
                     }
                 }
             }
