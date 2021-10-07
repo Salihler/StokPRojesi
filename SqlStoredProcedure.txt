@@ -2,7 +2,7 @@
 go
 
 --Prosedürün ismini ve parametrelerini belirttiğimiz kısım.
-alter procedure IslemGetirAscProc(@ID varchar, @STARTDATE int, @ENDDATE int)
+alter procedure IslemGetirAscProc(@PRCODE varchar, @STARTDATE int, @ENDDATE int)
 as
 
 begin
@@ -19,7 +19,7 @@ CONVERT(VARCHAR(15), CAST(S.Tarih - 2 AS datetime), 104) as Tarih,
 case when S.IslemTur = 0 and S.Miktar IS NOT NULL then S.Miktar end as 'Giriş Miktarı',
 case when S.IslemTur = 1 and S.Miktar IS NOT NULL then S.Miktar end as 'Çıkış Miktarı'
 from STI S
-where S.ID=@ID and S.Tarih between @STARTDATE and @ENDDATE
+where S.MalKodu=@PRCODE and S.Tarih between @STARTDATE and @ENDDATE
 
 
 end

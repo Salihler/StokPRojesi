@@ -37,8 +37,10 @@ namespace StokProjesi
             this.cbProductSelect = new System.Windows.Forms.ComboBox();
             this.dtpStartingDate = new System.Windows.Forms.DateTimePicker();
             this.dtpEndingDate = new System.Windows.Forms.DateTimePicker();
-            this.vgData = new DevExpress.XtraVerticalGrid.VGridControl();
+            this.vgData = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.vgData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // sqlDataSource1
@@ -94,11 +96,18 @@ namespace StokProjesi
             // 
             // vgData
             // 
-            this.vgData.Cursor = System.Windows.Forms.Cursors.Default;
-            this.vgData.Location = new System.Drawing.Point(13, 167);
+            this.vgData.Location = new System.Drawing.Point(13, 139);
+            this.vgData.MainView = this.gridView1;
             this.vgData.Name = "vgData";
-            this.vgData.Size = new System.Drawing.Size(441, 271);
+            this.vgData.Size = new System.Drawing.Size(400, 200);
             this.vgData.TabIndex = 9;
+            this.vgData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.vgData;
+            this.gridView1.Name = "gridView1";
             // 
             // islemGetirForm
             // 
@@ -115,6 +124,7 @@ namespace StokProjesi
             this.Name = "islemGetirForm";
             this.Text = "İşlem Getir";
             ((System.ComponentModel.ISupportInitialize)(this.vgData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,7 +138,8 @@ namespace StokProjesi
         private System.Windows.Forms.ComboBox cbProductSelect;
         private System.Windows.Forms.DateTimePicker dtpStartingDate;
         private System.Windows.Forms.DateTimePicker dtpEndingDate;
-        private DevExpress.XtraVerticalGrid.VGridControl vgData;
+        private DevExpress.XtraGrid.GridControl vgData;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
     }
 }
 

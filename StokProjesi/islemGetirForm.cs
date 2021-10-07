@@ -30,7 +30,7 @@ namespace StokProjesi
                 using (SqlCommand sqCommand = new SqlCommand("IslemGetirAscProc", _conn))
                 {
                     sqCommand.CommandType = CommandType.StoredProcedure;
-                    sqCommand.Parameters.Add("@PRCODE", SqlDbType.Int).Value = cbProductSelect.ValueMember.ToString();
+                    sqCommand.Parameters.Add("@PRCODE", SqlDbType.VarChar).Value = cbProductSelect.ValueMember.ToString();
                     sqCommand.Parameters.Add("@STARTDATE ", SqlDbType.Int).Value = Convert.ToInt32(dtpStartingDate.Value.ToOADate());
                     sqCommand.Parameters.Add("@ENDDATE", SqlDbType.Int).Value = Convert.ToInt32(dtpEndingDate.Value.ToOADate());
 
